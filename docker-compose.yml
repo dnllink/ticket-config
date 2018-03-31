@@ -1,0 +1,40 @@
+version: '3'
+services:
+    mongo-db:
+        image: mongo
+        container_name: ticket-mongodb
+        networks:
+            - ticket-network
+        ports:
+            - "27017:27017"
+    ticket-config-server:
+        image: dnllink/ticket-config-server
+        networks:
+            - ticket-network
+        ports:
+            - "8888:8888"
+        container_name: ticket-config-server
+    ticket-eureka-server:
+        image: dnllink/ticket-eureka-server
+        networks:
+            - ticket-network
+        ports:
+            - "8761:8761"
+        container_name: ticket-eureka-server
+        depends_on:
+            - "ticket-config-server"
+            - "mongo-db"
+    ticket-sales:
+        image: dnllink/ticket-sales
+        networks:
+            - ticket-network
+        ports:
+            - "8081:8081"
+        container_name: ticket-sales
+        depends_on:
+            - "mongo-db"
+            - "ticket-config-server"
+            - "ticket-eureka-server"
+networks:
+    ticket-network:
+        driver: bridge
