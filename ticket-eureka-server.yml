@@ -1,5 +1,5 @@
-server
+server:
     port: 8761
-spring
-    application
+spring:
+    application:
         name: ticket-eureka-server
