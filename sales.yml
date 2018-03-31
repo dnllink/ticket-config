@@ -4,3 +4,7 @@ eureka:
     client:
         serviceUrl:
             defaultZone: http://ticket-eureka-server:8761/eureka/
+sales:
+    offers:
+        name: Oferta Especial
+        price: R$ 89,90
