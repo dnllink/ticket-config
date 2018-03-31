@@ -40,12 +40,11 @@ services:
         networks:
             - ticket-network
         ports:
-            - "8090:8090"
+            - "8100:8100"
         container_name: ticket-zuul-server
         depends_on:
             - "ticket-config-server"
             - "ticket-eureka-server"
 networks:
     ticket-network:
-        name: ticket-network
         driver: bridge
