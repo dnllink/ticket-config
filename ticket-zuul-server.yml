@@ -1,0 +1,6 @@
+server:
+    port: 8090
+eureka:
+    client:
+        serviceUrl:
+            defaultZone: http://ticket-eureka-server:8761/eureka/
